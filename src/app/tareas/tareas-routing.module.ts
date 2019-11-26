@@ -4,7 +4,6 @@ import { MainComponent } from './main/main.component';
 import { SimpleComponent } from './simple/simple.component';
 import { PlusComponent } from './plus/plus.component';
 
-
 const routes: Routes = [
   {
     path: '', 
