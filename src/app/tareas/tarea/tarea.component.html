@@ -1,0 +1,12 @@
+<div class="form-check">
+        <input type="checkbox" (change)="onChange()"
+          [(ngModel)]= "tarea.isCompleted"
+          class="form-check-input" name="" id="" >
+        <label class="form-check-label"
+          [ngClass]="{completed: tarea.isCompleted}" (blur)="onEdit($event, i)">
+            {{ tarea.nombre }}
+        </label>
+        <span class="boton" (click)="onModify($event)"> ✍️</span> 
+        <fa-icon [icon]="papelera" (click)="onDelete(i)"></fa-icon>  
+      </div>
+ 
