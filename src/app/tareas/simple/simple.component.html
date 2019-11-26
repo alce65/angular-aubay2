@@ -2,12 +2,47 @@
 <div class="form-group">
   <label for="nombre">Nueva tarea</label>
   <input type="text" class="form-control"
+    (keydown.enter)="onAddTarea($event)"
     [(ngModel)]="newTarea.nombre"
     name="nombre" id="nombre">
     <!-- [value] = 'nombre' (input) = 'nombre = value' -->
 </div>
 <button type="button" (click) = "onAddTarea($event)"
     class="btn btn-primary">Añadir</button>
+<button type="button" [disabled]="!tareas.length"
+  (click) = "onDeleteConfirm($event)"
+    class="btn btn-primary">Eliminar</button>
+
 <div class="mt-3">
-    
+  <div *ngIf="tareas.length; else sinLista">
+      <h3>Lista de tareas</h3>
+      <ul class="list-group">    
+        <li *ngFor="let item of tareas; let i = index"
+          class="list-group-item"> 
+          <div class="form-check">
+            <input type="checkbox" (change)="onChange()"
+              [(ngModel)]= "item.isCompleted"
+              class="form-check-input" name="" id="" >
+            <label class="form-check-label"
+              [ngClass]="{completed: item.isCompleted}" (blur)="onEdit($event, i)">
+                {{ item.nombre }}
+            </label>
+            <span class="boton" (click)="onModify($event)"> ✍️</span>
+            <fa-icon [icon]="papelera" (click)="onDelete(i)"></fa-icon>  
+          </div>
+        </li>
+      </ul>
+  </div>
+  <ng-template #sinLista>
+    <p>Animate a añadir alguna tarea</p>
+  </ng-template>  
 </div>
+<dialog #confirmar>
+    <p>Estas seguro</p>
+    <button type="button" (click)="onDeleteTareas(true)"
+      class="btn btn-primary btn-sm">Si</button>
+    <button type="button" (click)="onDeleteTareas(false)"
+      class="btn btn-primary btn-sm">No</button>
+</dialog>
+
+

@@ -1,0 +1,18 @@
+dialog {
+    color: bisque;
+    background-color: brown; 
+}
+
+dialog button {
+    margin: 0 0.2rem;
+}
+
+.completed {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+fa-icon, .boton {
+    padding-left: 1rem;
+    cursor: pointer;
+}
