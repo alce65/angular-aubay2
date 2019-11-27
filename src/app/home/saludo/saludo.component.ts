@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { Event } from '@angular/router';
 
 @Component({
