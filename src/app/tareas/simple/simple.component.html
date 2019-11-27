@@ -24,7 +24,9 @@
               [(ngModel)]= "item.isCompleted"
               class="form-check-input" name="" id="" >
             <label class="form-check-label"
-              [ngClass]="{completed: item.isCompleted}" (blur)="onEdit($event, i)">
+              [aubHacerEditable]="isEditable"
+              [ngClass]="{completed: item.isCompleted}" 
+              (blur)="onEdit($event, i)">
                 {{ item.nombre }}
             </label>
             <span class="boton" (click)="onModify($event)"> ✍️</span>

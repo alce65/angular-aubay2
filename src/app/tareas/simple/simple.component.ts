@@ -14,6 +14,7 @@ export class SimpleComponent implements OnInit {
   newTarea: TareaModel;
   papelera: IconDefinition;
   storeName: string;
+  isEditable: boolean;
 
   @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
 
@@ -21,6 +22,7 @@ export class SimpleComponent implements OnInit {
 
   ngOnInit() {
     this.storeName = 'tareas'
+    this.isEditable = false;
     this.tareas = JSON.parse(localStorage.getItem(this.storeName)) || []
 
     this.newTarea = new TareaModel()
@@ -58,11 +60,15 @@ export class SimpleComponent implements OnInit {
   }
 
   onModify(ev: any) {
-    ev.target.previousElementSibling.setAttribute('contenteditable', true)
+    this.isEditable = true
+    console.log(this.isEditable)
+    // No sería buena práctica
+    // ev.target.previousElementSibling.setAttribute('contenteditable', true)
   }
 
   onEdit(ev: any, i:number) {
     this.tareas[i].nombre = ev.target.textContent
+    this.isEditable = false
     this.actualizarStore()
   } 
 

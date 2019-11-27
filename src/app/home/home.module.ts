@@ -7,6 +7,7 @@ import { SaludoComponent } from './saludo/saludo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SaludoRxComponent } from './saludo-rx/saludo-rx.component';
 import { SaludoRefComponent } from './saludo-ref/saludo-ref.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, SaludoComponent, SaludoRxComponent, SaludoRefComponent],
@@ -15,7 +16,8 @@ import { SaludoRefComponent } from './saludo-ref/saludo-ref.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule
   ],
   exports: [HomeComponent]
 })
