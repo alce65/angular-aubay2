@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getTitleText() {
-    return element(by.css('aub-root .content span')).getText() as Promise<string>;
+    return element(by.css('aub-header h1')).getText() as Promise<string>;
   }
 }
