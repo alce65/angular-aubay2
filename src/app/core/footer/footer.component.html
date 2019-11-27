@@ -5,7 +5,7 @@
                 {{autor}}
             </address>
             <p class="col-12 text-center">
-                {{ fecha.toLocaleDateString() }}
+                {{ fecha | date : 'fullDate' }}
             </p>
         </footer>
     </div>
