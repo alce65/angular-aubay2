@@ -1,11 +1,11 @@
 <div class="form-group">
     <label for="nombre">Nueva tarea</label>
     <input type="text" class="form-control"
-        (keydown.enter)="onAddTarea($event)"
+        (keydown.enter)="onSendAddTarea($event)"
         [formControl]="fcNonbreTarea"
         name="nombre" id="nombre">
         <!-- [value] = 'nombre' (input) = 'nombre = value' -->
 </div>
-<button type="button" (click) = "onAddTarea($event)" 
+<button type="button" (click) = "onSendAddTarea($event)" 
     class="btn btn-primary">Añadir</button>
 

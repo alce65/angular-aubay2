@@ -19,7 +19,7 @@ export class NuevaComponent implements OnInit {
     this.fcNonbreTarea = new FormControl()
   }
 
-  onAddTarea(ev) {
+  onSendAddTarea(ev) {
     if(!this.fcNonbreTarea.value) {
       return
     }

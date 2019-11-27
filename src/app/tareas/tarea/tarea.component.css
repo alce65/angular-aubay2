@@ -1,0 +1,9 @@
+.completed {
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+fa-icon, .boton {
+    padding-left: 1rem;
+    cursor: pointer;
+}

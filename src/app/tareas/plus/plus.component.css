@@ -1,0 +1,8 @@
+dialog {
+    color: bisque;
+    background-color: brown; 
+}
+
+dialog button {
+    margin: 0 0.2rem;
+}
