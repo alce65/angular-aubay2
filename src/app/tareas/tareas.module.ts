@@ -6,7 +6,7 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { SimpleComponent } from './simple/simple.component';
 import { PlusComponent } from './plus/plus.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NuevaComponent } from './nueva/nueva.component';
 import { TareaComponent } from './tarea/tarea.component';
@@ -19,8 +19,8 @@ import { TareasStoreService } from '../services/tareas-store.service';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    FormsModule,
-    ReactiveFormsModule,
+    /* FormsModule,
+    ReactiveFormsModule, */
     SharedModule,
     TareasRoutingModule
   ],

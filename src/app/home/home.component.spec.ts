@@ -6,6 +6,7 @@ import { SaludoRefComponent } from './saludo-ref/saludo-ref.component';
 import { SaludoRxComponent } from './saludo-rx/saludo-rx.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -22,7 +23,9 @@ describe('HomeComponent', () => {
        imports: [
          FormsModule,
          ReactiveFormsModule,
-         NgbModule]
+         NgbModule,
+         SharedModule
+        ]
     })
     .compileComponents();
   }));

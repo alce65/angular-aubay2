@@ -5,6 +5,7 @@ import { NuevaComponent } from '../nueva/nueva.component';
 import { TareaComponent } from '../tarea/tarea.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TareasModule } from '../tareas.module';
 
 describe('PlusComponent', () => {
   let component: PlusComponent;
@@ -20,7 +21,8 @@ describe('PlusComponent', () => {
        imports: [
          FormsModule,
          ReactiveFormsModule,
-         FontAwesomeModule
+         FontAwesomeModule,
+         TareasModule
         ]
     })
     .compileComponents();
