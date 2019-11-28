@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TareaModel } from 'src/app/models/tarea.model';
 import { faTrashAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { TareasStoreService } from 'src/app/services/tareas-store.service';
 
 
 @Component({
@@ -13,17 +14,16 @@ export class SimpleComponent implements OnInit {
   tareas: Array<TareaModel>
   newTarea: TareaModel;
   papelera: IconDefinition;
-  storeName: string;
   isEditable: boolean;
 
   @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
 
-  constructor() { }
+  constructor(public storeService: TareasStoreService) { 
+  }
 
   ngOnInit() {
-    this.storeName = 'tareas'
     this.isEditable = false;
-    this.tareas = JSON.parse(localStorage.getItem(this.storeName)) || []
+    this.tareas = this.storeService.getTareas()
 
     this.newTarea = new TareaModel()
     this.papelera = faTrashAlt;
@@ -45,7 +45,7 @@ export class SimpleComponent implements OnInit {
   onDeleteTareas (ev) {
     if (ev) { 
       this.tareas = []
-      localStorage.removeItem(this.storeName)
+      this.storeService.removeTareas()
     }
     this.confirmar.nativeElement.close()
   }
@@ -73,8 +73,7 @@ export class SimpleComponent implements OnInit {
   } 
 
   private actualizarStore() {
-    localStorage.setItem(this.storeName,
-      JSON.stringify(this.tareas) )
+    this.storeService.setTareas(this.tareas)
   }
 
 }

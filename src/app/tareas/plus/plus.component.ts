@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TareaModel } from 'src/app/models/tarea.model';
 import { EditTareaIf } from 'src/app/models/edit-tarea.interface';
+import { TareasStoreService } from 'src/app/services/tareas-store.service';
 
 @Component({
   selector: 'aub-plus',
@@ -9,14 +10,12 @@ import { EditTareaIf } from 'src/app/models/edit-tarea.interface';
 })
 export class PlusComponent implements OnInit {
   tareas: Array<TareaModel>
-  storeName: string;
   @ViewChild('confirmar', {static: true}) confirmar: ElementRef;
 
-  constructor() { }
+  constructor(private storeService: TareasStoreService) { }
 
   ngOnInit() {
-    this.storeName = 'tareas'
-    this.tareas = JSON.parse(localStorage.getItem(this.storeName)) || []
+    this.tareas = this.storeService.getTareas() 
   }
 
   onAddTarea(tarea: TareaModel) {
@@ -50,14 +49,13 @@ export class PlusComponent implements OnInit {
   onDeleteTareas (ev: boolean) {
     if(ev) {
       this.tareas = []
-      localStorage.removeItem(this.storeName)
+      this.storeService.removeTareas()
     }
     this.confirmar.nativeElement.close()
   }
 
 
   private actualizarStore() {
-    localStorage.setItem(this.storeName,
-      JSON.stringify(this.tareas) )
+    this.storeService.setTareas(this.tareas)
   }
 }

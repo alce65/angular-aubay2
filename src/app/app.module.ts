@@ -25,7 +25,9 @@ registerLocaleData(es, 'es')
     CoreModule,
     SharedModule
   ],
-  providers: [ {provide: LOCALE_ID, useValue: 'es'}],
+  providers: [ 
+    {provide: LOCALE_ID, useValue: 'es'}
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
