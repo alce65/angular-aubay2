@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule
   ],
   exports: [

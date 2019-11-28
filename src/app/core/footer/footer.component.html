@@ -2,7 +2,7 @@
     <div class="container">
         <footer class="row">
             <address class="col-12 text-center">
-                {{autor}}
+                {{autor | truncar : 10 }}
             </address>
             <p class="col-12 text-center">
                 {{ fecha | date : 'fullDate' }}
