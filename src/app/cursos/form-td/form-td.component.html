@@ -1,0 +1,126 @@
+<h3>Formulario Template-Driven</h3>
+<form name="form-td" id ="form-td" (submit)="onSubmit()" 
+    #formRef="ngForm">
+    <fieldset>
+        <legend>Datos de usuario</legend>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="alumno.nombre" required
+            #refNombre = "ngModel"
+            name="nombre" id="nombre">
+        </div>
+        <div class="error" *ngIf="refNombre.touched && refNombre.errors">
+            <p>Es necesario completar el nombre</p>
+        </div>
+        <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="alumno.apellidos" required
+            #refApellido = "ngModel"
+            name="apellidos" id="apellidos">
+        </div>
+        <div class="error" *ngIf="refApellido.touched && refApellido.errors">
+            <p>Es necesario completar el apellido</p>
+        </div>
+        <div class="form-group">
+            <label for="passwd">Contraseña</label>
+            <input type="password" class="form-control" 
+            [(ngModel)]="alumno.passwd"
+            required #refPasswd = "ngModel"
+            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$"
+            title=" requires one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces. "
+            name="passwd" id="passwd">
+        </div>   
+        <div class="error" *ngIf="refPasswd.touched && refPasswd.errors">
+                <p *ngIf="refPasswd.errors?.required">
+                    Es necesario completar la contraseña</p>
+                <p *ngIf="refPasswd.errors?.pattern">
+                    La contraseña debe tener el formato adecuado: 
+                    one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces.
+                </p>
+            </div>
+        <div class="form-group">
+            <label for="dni">DNI</label>
+            <input type="text" class="form-control" 
+            [(ngModel)]="alumno.dni" 
+            #refDNI = "ngModel"
+            required minlength="9"
+            name="dni" id="dni">
+        </div>  
+        <div class="error" *ngIf="refDNI.touched && refDNI.errors">
+            <p *ngIf="refDNI.errors?.required">
+                Es necesario completar el DNI</p>
+            <p *ngIf="refDNI.errors?.minlength">
+                El DNI debe tener exactamente 9 caracteres
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="email">Correo</label>
+            <input type="email" class="form-control" 
+            [(ngModel)]="alumno.email"
+            name="email" id="email">
+        </div>
+        <div class="form-group">
+            <label for="nacim">Fecha de nacimiento</label>
+            <input type="date" class="form-control" 
+            [(ngModel)]="alumno.nacim"
+            name="nacim" id="nacim">
+        </div>
+        <div class="form-group">
+          <label for="coment">Comentarios</label>
+          <textarea class="form-control" 
+          [(ngModel)]="alumno.coments"
+          name="coment" id="coment" rows="3"></textarea>
+        </div>                            
+    </fieldset>    
+    <fieldset>
+        <legend>Datos del curso</legend>
+        <div class="form-check">
+            <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" 
+            [(ngModel)]="alumno.isOk"
+            name="isOk" id="isOk" required>
+            Estoy de acuerdo con ....
+            </label>
+        </div>  
+        <div>
+            <legend>Turno</legend>
+            <div class="form-check" *ngFor="let item of turnos; let i = index">
+                <label class="form-check-label" [title]="item.descripcion">
+                    <input type="radio" class="form-check-input" name="turno"
+                    [(ngModel)]="alumno.turno" (change) = "onChange()"
+                    [value]="item" required>
+                    {{ item.nombre }}
+                </label>
+            </div>
+
+           <div class="error" 
+            *ngIf="formRef.form.controls.turno?.touched && 
+                formRef.form.controls.turno?.errors">
+                    <p>Es necesario completar el turno</p>
+                </div>
+
+        </div>  
+        <div class="form-group" >
+        <label for="curso">Selecciona el tema</label>
+            <select class="form-control" 
+            [(ngModel)]="alumno.curso"
+            name="curso" id="curso" required> 
+                <option [ngValue]="item" *ngFor="let item of cursos"
+                [title]="item.descripcion">
+                    {{ item.nombre}}
+                </option>
+
+            </select>
+        </div>
+    </fieldset>
+    <button type="submit" [disabled] = "formRef.invalid"
+    class="btn btn-primary">
+        Enviar</button>
+</form>            
+
+<p>
+    {{ alumno | json }}
+</p>
+

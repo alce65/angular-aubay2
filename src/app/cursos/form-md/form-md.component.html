@@ -1,0 +1,88 @@
+<h3>Formulario Model-Driven (reactivo)</h3>
+<form name="form-md" id ="form-md" (submit)="onSubmit()"
+    [formGroup]="formCurso">
+    <fieldset>
+        <legend>Datos de usuario</legend>
+        <div class="form-group">
+            <label for="nombre-md">Nombre</label>
+            <input type="text" class="form-control" 
+                formControlName="nombre" id="nombre-md">
+        </div>
+        <div class="error" *ngIf="
+        formCurso.controls.nombre.touched && 
+        formCurso.get('nombre').errors">
+                <p>Es necesario completar el nombre</p>
+            </div>
+        <div class="form-group">
+            <label for="apellidos-md">Apellidos</label>
+            <input type="text" class="form-control" 
+                formControlName="apellidos" id="apellidos-md">
+        </div>
+        <div class="form-group">
+            <label for="passwd-md">Contraseña</label>
+            <input type="password" class="form-control" 
+            title=" requires one lower case letter, one upper case letter, one digit, 6-13 length, and no spaces. "
+            formControlName="passwd" id="passwd-md">
+        </div>       
+        <div class="form-group">
+            <label for="dni-md">DNI</label>
+            <input type="text" class="form-control" 
+            formControlName="dni" id="dni-md">
+            </div>  
+        <div class="form-group">
+            <label for="email-md">Correo</label>
+            <input type="email" class="form-control" 
+            formControlName="email" id="email-md"
+        >
+        </div>
+        <div class="form-group">
+            <label for="nacim-md">Fecha de nacimiento</label>
+            <input type="date" class="form-control" 
+            formControlName="nacim" id="nacim-md">
+        </div>
+        <div class="form-group">
+          <label for="coment-md">Comentarios</label>
+          <textarea class="form-control" 
+          formControlName="coments" id="coment-md" rows="3"></textarea>
+        </div>                            
+    </fieldset>    
+    <fieldset>
+        <legend>Datos del curso</legend>
+        <div class="form-check">
+            <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" 
+            formControlName="isOk">
+            Estoy de acuerdo con ....
+            </label>
+        </div>  
+        <div>
+            <legend>Turno</legend>
+
+            <div class="form-check" *ngFor="let item of turnos">
+                <label class="form-check-label" [title]="item.descripcion">
+                    <input type="radio" class="form-check-input" 
+                    name="turno" formControlName="turno"
+                    [value]="item">
+                    {{ item.nombre }}
+                </label>
+            </div>
+        </div>  
+        <div class="form-group" >
+        <label for="curso-md">Selecciona el tema</label>
+            <select class="form-control" formControlName="curso" 
+                id="curso-md">
+                <option value=""></option>    
+                <option [ngValue]="item" *ngFor="let item of cursos"
+                [title]="item.descripcion">
+                    {{ item.nombre}}
+                </option>
+
+            </select>
+        </div>
+    </fieldset>
+    <button type="submit" [disabled]= "formCurso.invalid"
+    class="btn btn-primary">
+        Enviar</button>
+</form>   
+
+{{ formCurso.value  | json }}
