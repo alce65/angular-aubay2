@@ -21,6 +21,13 @@ export class AlumnoModel {
     ) {}
 }
 
+export class AlumnoShortModel {
+    constructor(
+        public nombre: string = '',
+        public curso: string = '',
+    ) {}
+}
+
 
 
 
