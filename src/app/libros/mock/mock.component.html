@@ -1,0 +1,26 @@
+<h3>Mock de Libros</h3>
+<div class="form-group">
+  <input type="text" class="form-control" 
+  [formControl]='fcClave'
+  placeholder="Clave de búsqueda">
+</div>
+<button type="button" (click)="onBuscar()"
+    class="btn btn-primary">
+    Buscar tonto
+</button>
+<button type="button" (click)="onBuscarAsinc()"
+    class="btn btn-primary">
+    Buscar asinc
+</button>
+<button type="button" (click)="onDelete()"
+    class="btn btn-primary">
+    Borrar
+</button>
+<div *ngIf="libros.length" class="mt-4">
+    <h3>Resultados</h3>
+    <ul class="list-group">
+        <li class="list-group-item"
+        *ngFor="let item of libros">
+        {{ item.autores }} - {{ item.titulo}}</li>
+    </ul>
+</div>
