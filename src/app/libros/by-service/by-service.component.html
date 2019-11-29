@@ -1,0 +1,28 @@
+<h3>Libros en Google (via servicio)</h3>
+<div class="form-group">
+  <input type="text" class="form-control" 
+  [formControl]='fcClave'
+  (keydown.enter)="onBuscar()"
+  placeholder="Clave de búsqueda">
+</div>
+<button type="button" (click)="onBuscar()"
+    class="btn btn-primary">
+    Buscar (Promesa)
+</button>
+<button type="button" (click)="onBuscarAsinc()"
+    class="btn btn-primary">
+    Buscar (async / await)
+</button>
+<button type="button" (click)="onBuscarRx()"
+    class="btn btn-primary">
+    Buscar (Observable)
+</button>
+<div *ngIf="libros.length">
+    <h3>Resultados</h3>
+    <ul class="list-group">
+        <li class="list-group-item"
+        *ngFor="let item of libros">
+        {{ item.autores }} - {{ item.titulo}}</li>
+    </ul>
+</div>
+
