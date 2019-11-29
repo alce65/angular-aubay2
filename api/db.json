@@ -17,7 +17,20 @@
     "name": "typicode"
   },
   "users": [
-    {"id" : 1, "name": "Pepe", "curso": "Angular"},
-    {"id" : 2, "name": "Juan", "curso": "Angular"}
+    {
+      "id": 1,
+      "nombre": "Jose",
+      "curso": "PHP"
+    },
+    {
+      "id": 3,
+      "nombre": "Rosa",
+      "curso": "PHP"
+    },
+    {
+      "id": 4,
+      "nombre": "Maria",
+      "curso": "Java"
+    }
   ]
 }

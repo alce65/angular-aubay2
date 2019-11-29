@@ -9,10 +9,11 @@ import { FormMdComponent } from './form-md/form-md.component';
 import { InscripComponent } from './inscrip/inscrip.component';
 import { AlumnusComponent } from './alumnus/alumnus.component';
 import { MenuComponent } from './menu/menu.component';
+import { SingleComponent } from './single/single.component';
 
 
 @NgModule({
-  declarations: [CursosComponent, FormTdComponent, FormMdComponent, InscripComponent, AlumnusComponent, MenuComponent],
+  declarations: [CursosComponent, FormTdComponent, FormMdComponent, InscripComponent, AlumnusComponent, MenuComponent, SingleComponent],
   imports: [
     CommonModule,
     SharedModule,

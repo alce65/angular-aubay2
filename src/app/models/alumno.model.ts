@@ -23,6 +23,7 @@ export class AlumnoModel {
 
 export class AlumnoShortModel {
     constructor(
+        public id: number | string = null, 
         public nombre: string = '',
         public curso: string = '',
     ) {}
